@@ -23,9 +23,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * Integration tests for the {@link SituationResource} REST controller.
- */
+
 @SpringBootTest(classes = SgpDbApp.class)
 @AutoConfigureMockMvc
 @WithMockUser
@@ -51,12 +49,8 @@ public class SituationResourceIT {
 
     private Situation situation;
 
-    /**
-     * Create an entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
+    // Create an entity for this test.
+
     public static Situation createEntity(EntityManager em) {
         Situation situation = new Situation()
             .date(DEFAULT_DATE)
@@ -64,12 +58,8 @@ public class SituationResourceIT {
             .remplissage(DEFAULT_REMPLISSAGE);
         return situation;
     }
-    /**
-     * Create an updated entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
+    // Create an updated entity for this test.
+
     public static Situation createUpdatedEntity(EntityManager em) {
         Situation situation = new Situation()
             .date(UPDATED_DATE)
@@ -137,7 +127,7 @@ public class SituationResourceIT {
             .andExpect(jsonPath("$.[*].volume").value(hasItem(DEFAULT_VOLUME.doubleValue())))
             .andExpect(jsonPath("$.[*].remplissage").value(hasItem(DEFAULT_REMPLISSAGE.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getSituation() throws Exception {

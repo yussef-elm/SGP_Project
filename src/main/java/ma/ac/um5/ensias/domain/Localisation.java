@@ -96,7 +96,6 @@ public class Localisation implements Serializable {
         this.ref_produit = ref_produit;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
     }

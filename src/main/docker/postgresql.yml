@@ -2,8 +2,7 @@ version: '2'
 services:
   sgp_db-postgresql:
     image: postgres:12.3
-    # volumes:
-    #     - ~/volumes/jhipster/SGP_DB/postgresql/:/var/lib/postgresql/data/
+
     environment:
       - POSTGRES_USER=SGP_DB
       - POSTGRES_PASSWORD=sgp

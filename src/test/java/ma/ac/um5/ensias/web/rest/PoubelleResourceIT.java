@@ -21,9 +21,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * Integration tests for the {@link PoubelleResource} REST controller.
- */
+
 @SpringBootTest(classes = SgpDbApp.class)
 @AutoConfigureMockMvc
 @WithMockUser

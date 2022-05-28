@@ -47,13 +47,7 @@ public class LocalisationResource {
         this.localisationRepository = localisationRepository;
     }
 
-    /**
-     * {@code POST  /localisations} : Create a new localisation.
-     *
-     * @param localisation the localisation to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new localisation, or with status {@code 400 (Bad Request)} if the localisation has already an ID.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
+
     @PostMapping("/localisations")
     public ResponseEntity<Localisation> createLocalisation(@RequestBody Localisation localisation) throws URISyntaxException {
         log.debug("REST request to save Localisation : {}", localisation);
@@ -66,15 +60,7 @@ public class LocalisationResource {
             .body(result);
     }
 
-    /**
-     * {@code PUT  /localisations} : Updates an existing localisation.
-     *
-     * @param localisation the localisation to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated localisation,
-     * or with status {@code 400 (Bad Request)} if the localisation is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the localisation couldn't be updated.
-     * @throws URISyntaxException if the Location URI syntax is incorrect.
-     */
+
     @PutMapping("/localisations")
     public ResponseEntity<Localisation> updateLocalisation(@RequestBody Localisation localisation) throws URISyntaxException {
         log.debug("REST request to update Localisation : {}", localisation);
@@ -87,12 +73,7 @@ public class LocalisationResource {
             .body(result);
     }
 
-    /**
-     * {@code GET  /localisations} : get all the localisations.
-     *
-     * @param pageable the pagination information.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of localisations in body.
-     */
+
     @GetMapping("/localisations")
     public ResponseEntity<List<Localisation>> getAllLocalisations(Pageable pageable) {
         log.debug("REST request to get a page of Localisations");
@@ -101,12 +82,7 @@ public class LocalisationResource {
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
 
-    /**
-     * {@code GET  /localisations/:id} : get the "id" localisation.
-     *
-     * @param id the id of the localisation to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the localisation, or with status {@code 404 (Not Found)}.
-     */
+
     @GetMapping("/localisations/{id}")
     public ResponseEntity<Localisation> getLocalisation(@PathVariable Long id) {
         log.debug("REST request to get Localisation : {}", id);
@@ -114,12 +90,7 @@ public class LocalisationResource {
         return ResponseUtil.wrapOrNotFound(localisation);
     }
 
-    /**
-     * {@code DELETE  /localisations/:id} : delete the "id" localisation.
-     *
-     * @param id the id of the localisation to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
+
     @DeleteMapping("/localisations/{id}")
     public ResponseEntity<Void> deleteLocalisation(@PathVariable Long id) {
         log.debug("REST request to delete Localisation : {}", id);

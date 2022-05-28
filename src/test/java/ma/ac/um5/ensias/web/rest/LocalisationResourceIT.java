@@ -21,9 +21,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-/**
- * Integration tests for the {@link LocalisationResource} REST controller.
- */
+
 @SpringBootTest(classes = SgpDbApp.class)
 @AutoConfigureMockMvc
 @WithMockUser
@@ -58,12 +56,7 @@ public class LocalisationResourceIT {
 
     private Localisation localisation;
 
-    /**
-     * Create an entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
+
     public static Localisation createEntity(EntityManager em) {
         Localisation localisation = new Localisation()
             .collectivite_1(DEFAULT_COLLECTIVITE_1)
@@ -74,12 +67,7 @@ public class LocalisationResourceIT {
             .latitude(DEFAULT_LATITUDE);
         return localisation;
     }
-    /**
-     * Create an updated entity for this test.
-     *
-     * This is a static method, as tests for other entities might also need it,
-     * if they test an entity which requires the current entity.
-     */
+
     public static Localisation createUpdatedEntity(EntityManager em) {
         Localisation localisation = new Localisation()
             .collectivite_1(UPDATED_COLLECTIVITE_1)
@@ -126,7 +114,6 @@ public class LocalisationResourceIT {
         // Create the Localisation with an existing ID
         localisation.setId(1L);
 
-        // An entity with an existing ID cannot be created, so this API call must fail
         restLocalisationMockMvc.perform(post("/api/localisations")
             .contentType(MediaType.APPLICATION_JSON)
             .content(TestUtil.convertObjectToJsonBytes(localisation)))
@@ -156,7 +143,7 @@ public class LocalisationResourceIT {
             .andExpect(jsonPath("$.[*].logitude").value(hasItem(DEFAULT_LOGITUDE.doubleValue())))
             .andExpect(jsonPath("$.[*].latitude").value(hasItem(DEFAULT_LATITUDE.doubleValue())));
     }
-    
+
     @Test
     @Transactional
     public void getLocalisation() throws Exception {

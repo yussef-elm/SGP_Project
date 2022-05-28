@@ -9,9 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Spring Data  repository for the Poubelle entity.
- */
+
 @SuppressWarnings("unused")
 @Repository
 public interface PoubelleRepository extends JpaRepository<Poubelle, Long> {
